@@ -1,0 +1,104 @@
+\documentclass[10pt, landscape, letterpaper]{article}
+
+\usepackage{amssymb}
+\usepackage{stb-misc}
+\usepackage{fontspec}
+\usepackage[margin=1in]{geometry}
+\usepackage{multicol}
+\usepackage{pgffor}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{enumitem}
+
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+
+\pagenumbering{gobble}
+
+\newcommand*{\checkbox}{\(\square\)}
+\newcommand*{\area}[1]{\textbf{#1}}
+
+\newcommand*{\makechecks}[1]{%
+    \foreach \i in {1, ..., #1} {\checkbox{} \ifthenelse{\i = #1}{}{\phantom{ }}}
+%     \foreach \i in {1, ..., #1} {\checkbox{}}
+}
+
+\newcommand*{\energy}[1]{Energy Tanks (#1): & \makechecks{#1}}
+\newcommand*{\reserves}[1]{Reserve Tanks (#1): & \makechecks{#1}}
+\newcommand*{\missiles}[1]{Missile Tanks (#1): & \makechecks{#1}}
+\newcommand*{\supers}[1]{Super Missile Tanks (#1): & \makechecks{#1}}
+\newcommand*{\powers}[1]{Power Bomb Tanks (#1): & \makechecks{#1}}
+
+\newcommand*{\majoritem}[1]{#1: & \makechecks{1}}
+
+\begin{document}
+\section*{Super Metroid Checklist}
+\begin{center}
+    \begin{multicols}{2}
+        \begin{tabular}{rl}
+            & \area{Crateria} \\
+            \majoritem{Bombs} \\
+            \missiles{8} \\
+            \supers{1} \\
+            \powers{1} \\
+            \energy{2} \\
+            
+            & \area{Wrecked Ship} \\
+            \majoritem{Gravity Suit} \\
+            \missiles{3} \\
+            \supers{2} \\
+            \energy{1} \\
+            \reserves{1} \\
+            
+            & \area{Brinstar} \\
+            \majoritem{Charge Beam} \\
+            \majoritem{Morph Ball} \\
+            \majoritem{Spazer} \\
+            \majoritem{Varia Suit} \\
+            \majoritem{X-Ray Scope} \\
+            \missiles{12} \\
+            \supers{3} \\
+            \powers{5} \\
+            \energy{5} \\
+            \reserves{1} \\
+        \end{tabular}
+
+        \columnbreak
+
+        \begin{tabular}{rl}
+            & \area{Norfair} \\
+            \majoritem{Grapple Beam} \\
+            \majoritem{Hi-Jump Boots} \\
+            \majoritem{Ice Beam} \\
+            \majoritem{Screw Attack} \\
+            \majoritem{Speed Booster} \\
+            \majoritem{Wave Beam} \\
+            \missiles{15} \\
+            \supers{1} \\
+            \powers{3} \\
+            \energy{4} \\
+            \reserves{1} \\
+            
+            & \area{Maridia} \\
+            \majoritem{Plasma Beam} \\
+            \majoritem{Space Jump} \\
+            \majoritem{Spring Ball} \\
+            \missiles{8} \\
+            \supers{3} \\
+            \powers{1} \\
+            \energy{2} \\
+            \reserves{1}
+        \end{tabular}
+    \end{multicols}
+        
+    \begin{tabular}{rl}
+        & \area{Totals} \\
+        Missile Tanks (46): & \makechecks{23} \\
+        & \makechecks{23} \\
+        \supers{10} \\
+        \powers{10} \\
+        \energy{14} \\
+        \reserves{4}
+    \end{tabular}
+\end{center}
+\end{document}
